@@ -1,15 +1,12 @@
 ## Suggested Reading List:
 I created this app to help track upcoming books I would like to read as well as provide an avenue for friends and family to make recommendations about what they think I should read next (or what I should avoid reading if they think it should collect dust on my backlog pile).
 
-Leave me a recommendation [here!](link)
+Leave me a recommendation [here!](https://mikes-reading-list.fly.dev/)
 
 ![Reading List Screenshot](./public/readingList.png)
 
 ## Technologies used:
-1. MEN Stack
-  MongoDB/Mongoose
-  Express
-  Node.js
+1. MEN Stack (MongoDB/Mongoose, Express, and Node.js)
 2. Google 0Auth
 3. EJS
 4. Git
