@@ -1,0 +1,13 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+<h1>Suggestion Page</h1>
+<p>Suggested by: <%= book.owner.name %>...</p>
+<img src="<%= book.owner.avatar %>" alt="<%= book.owner.name %>' avatar">
+<h2><%= book.title %></h2>
+<h3><%= book.Author %></h3>
+<h4>This book is in the <%= book.readMe ? 'readMe!' : 'backlog' %> pile.</h4>
+</main>
+
+<%- include('../partials/footer') %>
