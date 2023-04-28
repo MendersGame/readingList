@@ -42,8 +42,8 @@ function show(req, res) {
     })
 }
 
-function readCheck(req, res) {
-  book.findById(req.params.bookId)
+function flipRead(req, res) {
+  Book.findById(req.params.bookId)
     .then(book => {
       book.readMe = !book.readMe
       book.save()
@@ -58,7 +58,7 @@ function readCheck(req, res) {
 }
 
 function edit(req, res) {
-  book.findById(req.params.bookId)
+  Book.findById(req.params.bookId)
     .then(book => {
       res.render('books/edit', {
         book,
@@ -72,29 +72,46 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  book.findById(req.params.bookId)
+  Book.findById(req.params.bookId)
     .then(book => {
       if (book.owner.equals(req.user.profile._id)) {
-        // ALLOW THE UPDATE OF THE book
-
+        console.log("if check");
         req.body.readMe = !!req.body.readMe
-        // updateOne
         book.updateOne(req.body)
-
-      } else {
-        // DO NOT ALLOW THE UPDATE TO HAPPEN
-      }
+        .then(() => {
+          res.redirect('/books')
+        }) 
+        .catch(err => {
+          console.log(err)
+          res.redirect('/')
+        })
+      } 
     })
     .catch(err => {
       console.log(err)
       res.redirect('/')
     })
 }
+
+function deleteBook(req, res) {
+  console.log("Delete Call");
+  Book.findByIdAndDelete(req.params.bookId)
+  .then(() => {
+    console.log("Deleted");
+    res.redirect('/books')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   create,
   show,
-  readCheck,
+  flipRead,
   edit,
-  update
+  update,
+  deleteBook as delete,
 }

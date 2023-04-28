@@ -10,9 +10,11 @@ router.get('/:bookId/edit', isLoggedIn, bookCtrl.edit)
 
 router.post('/', isLoggedIn, bookCtrl.create)
 
-router.patch('/:bookId/readCheck', isLoggedIn, bookCtrl.readCheck)
+router.patch('/:bookId/flip-read', isLoggedIn, bookCtrl.flipRead)
 
 router.put('/:bookId', isLoggedIn, bookCtrl.update)
+
+router.delete('/:bookId', isLoggedIn, bookCtrl.delete)
 
 export {
   router

@@ -15,20 +15,20 @@
       Author:
       <input type="text" name="author" autocomplete="off">
     </label><label>
-      ReadMe?:
+      Recommended?:
       <input type="checkbox" name="readMe">
     </label>
     <button type="submit">Add book</button>
   </form>
 <% } %>
 </main>
-<h2>My backlog!</h2>
+<h2>What to read next?!</h2>
 <ul>
   <% books.forEach(book => { %>
     <li>
-      📚
+      <%= book.readMe ? '📚' : '⏲️' %>
       <a href="/books/<%= book._id %>"><%= book.title %></a>
-      is <%= book.readMe ? 'readMe!' : 'backlog' %>
+      written by <%= book.author %> is in the <%= book.readMe ? 'readMe!' : 'backlog' %> pile.
     </li>
   <% }) %>
 </ul>

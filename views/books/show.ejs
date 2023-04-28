@@ -6,8 +6,28 @@
 <p>Suggested by: <%= book.owner.name %>...</p>
 <img src="<%= book.owner.avatar %>" alt="<%= book.owner.name %>' avatar">
 <h2><%= book.title %></h2>
-<h3><%= book.Author %></h3>
+<h3>Written by: <%= book.author %></h3>
 <h4>This book is in the <%= book.readMe ? 'readMe!' : 'backlog' %> pile.</h4>
+<% if (user) { %>
+  <form 
+    action="/books/<%= book._id %>/flip-read?_method=PATCH"
+    method="POST"
+  >
+    <button class="btn" type="submit">
+      Put book on the <%= book.readMe ? 'Backlog' : 'ReadMe' %> pile.
+    </button>
+  </form>
+<% } %>
+<% if (book.owner.equals(user?.profile._id)) { %>
+  <a href="/books/<%= book._id %>/edit">
+    <button class="btn">Edit this book!</button>
+  </a>
+<% } %>
+<% if (book.owner.equals(user?.profile._id)) { %>
+  <a href="/books/<%= book._id %>?_method=DELETE" method="POST">
+    <button class="btn">Delete this book</button>
+  </a>
+<% } %>
 </main>
 
 <%- include('../partials/footer') %>
