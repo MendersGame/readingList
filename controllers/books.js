@@ -94,7 +94,7 @@ function update(req, res) {
 }
 
 function deleteBook(req, res) {
-  console.log("Delete Call");
+  console.log("Delete Book Call");
   Book.findByIdAndDelete(req.params.bookId)
   .then(() => {
     console.log("Deleted");
