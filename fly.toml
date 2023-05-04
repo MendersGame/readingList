@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mikesreadinglist on 2023-04-28T17:02:17-04:00
+# fly.toml app configuration file generated for mikereadinglist on 2023-05-01T18:45:20-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "mikesreadinglist"
+app = "mikereadinglist"
 primary_region = "iad"
 
 [env]

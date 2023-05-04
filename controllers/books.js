@@ -75,7 +75,6 @@ function update(req, res) {
   Book.findById(req.params.bookId)
     .then(book => {
       if (book.owner.equals(req.user.profile._id)) {
-        console.log("if check");
         req.body.readMe = !!req.body.readMe
         book.updateOne(req.body)
         .then(() => {
@@ -94,10 +93,8 @@ function update(req, res) {
 }
 
 function deleteBook(req, res) {
-  console.log("Delete Book Call");
   Book.findByIdAndDelete(req.params.bookId)
   .then(() => {
-    console.log("Deleted");
     res.redirect('/books')
   })
   .catch(err => {

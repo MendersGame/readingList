@@ -2,34 +2,35 @@
 <%- include('../partials/nav') %>
 
 <main>
-
-<h1>Reading List:</h1>
-<% if (user) { %>
-  <h2>Suggest a book:</h2>
-  <form action="/books" method="post">
-    <label>
-      Title:
-      <input type="text" name="title" autocomplete="off">
-    </label>
-    <label>
-      Author:
-      <input type="text" name="author" autocomplete="off">
-    </label><label>
-      Recommended?:
-      <input type="checkbox" name="readMe">
-    </label>
-    <button type="submit">Add book</button>
-  </form>
-<% } %>
-</main>
-<h2>What to read next?!</h2>
-<ul>
-  <% books.forEach(book => { %>
+  <h1>Reading List:</h1>
+  <% if (user) { %>
+    <h2>Suggest a book:</h2>
+    <form action="/books" method="post">
+      <label>
+        Title:
+        <input type="text" name="title" autocomplete="off">
+      </label>
+      <label>
+        Author:
+        <input type="text" name="author" autocomplete="off">
+      </label><label>
+        Recommended?:
+        <input type="checkbox" name="readMe">
+      </label>
+      <button type="submit">Add book</button>
+    </form>
+  <% } %>
+  <h2>What to read next?!</h2>
+  <ul>
+    <% books.forEach(book=> { %>
     <li>
       <%= book.readMe ? '📚' : '⏲️' %>
-      <a href="/books/<%= book._id %>"><%= book.title %></a>
+      <a href="/books/<%= book._id %>">
+        <%= book.title %>
+      </a>
       written by <%= book.author %> is in the <%= book.readMe ? 'readMe!' : 'backlog' %> pile.
     </li>
-  <% }) %>
-</ul>
+    <% }) %>
+  </ul>
+</main>
 <%- include('../partials/footer') %>

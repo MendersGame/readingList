@@ -2,21 +2,19 @@
 <%- include('../partials/nav') %>
 
 <main>
-<h1>Edit Page</h1>
-<form action="/books/<%= book._id %>?_method=PUT" method="POST">
-  <label>
-    Title: <input type="text" name="title" autocomplete="off" value="<%= book.title %>">
-  </label>
-  <label>
-    Author: <input type="text" name="author" autocomplete="off" value="<%= book.author %>">
-  </label>
-  <label>
-    Recommended? <input type="checkbox" name="readMe"
-    <%= book.readMe ? "checked" : "" %>
-    >
-  </label>
-  <button type="submit">Edit this book.</button>
-</form>
+  <h1>Edit Page</h1>
+  <form action="/books/<%= book._id %>?_method=PUT" method="POST">
+    <label>
+      Title: <input type="text" name="title" autocomplete="off" value="<%= book.title %>">
+    </label>
+    <label>
+      Author: <input type="text" name="author" autocomplete="off" value="<%= book.author %>">
+    </label>
+    <label>
+      Recommended? <input type="checkbox" name="readMe" <%=book.readMe ? "checked" : "" %>>
+    </label>
+    <button type="submit">Edit this book.</button>
+  </form>
 </main>
 
 <%- include('../partials/footer') %>
